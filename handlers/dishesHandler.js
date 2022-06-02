@@ -9,4 +9,10 @@ const addDish = (data) =>{
     return dishModel.create(data)
 }
 
-module.exports = {getAllDishes, addDish}
+const getSingleDish = async (id, data) => {
+
+    const result = await dishModel.findByIdAndUpdate(id, data,{runValidators:true, new:true})
+    return result
+}
+
+module.exports = {getAllDishes, addDish, getSingleDish}

@@ -48,3 +48,19 @@ chefsRouter.post('/', async(req, res)=>{
         })
     }
 } )
+
+
+chefsRouter.patch('/:id', async (req, res) => {
+    try {
+        const chef = await controller.requestUpdateChef(req.body, req.params.id)
+        res.status(200).json({
+            status: 'success',
+            data: chef
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: 'fail',
+            message: err
+        })
+    }
+})

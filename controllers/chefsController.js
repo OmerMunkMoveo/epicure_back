@@ -9,9 +9,15 @@ const requestAllChefsIds = () => {
     return handler.getAllChefsIds()
 }
 
-const requestAddChef = (data) =>{
+const requestAddChef = (data) => {
     return handler.addChef(data)
 }
 
 
-module.exports = {requestAllChefs, requestAddChef, requestAllChefsIds}
+const requestUpdateChef = async (data, id) => {
+    const chef = await handler.getSingleChef(id, data)
+    return chef
+}
+
+
+module.exports = {requestAllChefs, requestAddChef, requestAllChefsIds, requestUpdateChef}

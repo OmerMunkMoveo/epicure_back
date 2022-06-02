@@ -9,5 +9,10 @@ const requestAddDish = (data) =>{
     return handler.addDish(data)
 }
 
+const requestUpdateDish = async (data, id) => {
+    const dish = await handler.getSingleDish(id, data)
+    return dish
+}
 
-module.exports = {requestAllDishes, requestAddDish}
+
+module.exports = {requestAllDishes, requestAddDish, requestUpdateDish}
