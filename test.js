@@ -18,6 +18,8 @@ MongoClient.connect(url, {
     restaurants.deleteMany()
     const chefs = db.collection('chefs')
     chefs.deleteMany()
+    const dishes = db.collection('dishes')
+    dishes.deleteMany()
 
 });
 
