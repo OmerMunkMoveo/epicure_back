@@ -8,7 +8,8 @@ const dishSchema = new mongoose.Schema({
     description: String,
     img: String,
     price: Number,
-    properties: String
+    properties: String,
+    signature: Boolean
 
 })
 
