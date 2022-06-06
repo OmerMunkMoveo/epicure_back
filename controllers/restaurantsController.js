@@ -18,16 +18,15 @@ const requestAddRestaurant = async (data) => {
     return handler.addRestaurant(restaurant)
 }
 
-const requestUpdateRestaurant = async (data, id) => {
+const requestUpdateRestaurant =  (data, id) => {
 
-    const restaurant =await  handler.getSingleRestaurant(id, data)
-
-    console.log(restaurant)
-    return restaurant
-
-
+    return handler.getSingleRestaurant(id, data);
 
 }
 
+const requestDeleteRestaurant = async (id) => {
+    return handler.deleteRestaurant(id);
+}
 
-module.exports = {requestAllRestaurants, requestAddRestaurant, requestUpdateRestaurant}
+
+module.exports = {requestAllRestaurants, requestAddRestaurant, requestUpdateRestaurant, requestDeleteRestaurant}

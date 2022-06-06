@@ -15,9 +15,12 @@ const requestAddChef = (data) => {
 
 
 const requestUpdateChef = async (data, id) => {
-    const chef = await handler.getSingleChef(id, data)
-    return chef
+    return await handler.getSingleChef(id, data)
+}
+
+const requestDeleteChef = async (id) => {
+    return handler.deleteChef(id);
 }
 
 
-module.exports = {requestAllChefs, requestAddChef, requestAllChefsIds, requestUpdateChef}
+module.exports = {requestAllChefs, requestAddChef, requestAllChefsIds, requestUpdateChef, requestDeleteChef}

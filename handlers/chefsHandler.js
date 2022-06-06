@@ -16,11 +16,14 @@ const addChef = (data) => {
 }
 
 
-const getSingleChef = async (id, data) => {
+const updateChef = (id, data) => {
 
-    const result = await chefModel.findByIdAndUpdate(id, data,{runValidators:true, new:true})
-    return result
+    return chefModel.findByIdAndUpdate(id, data, {runValidators: true, new: true});
 }
 
-module.exports = {getAllChefs, addChef, getAllChefsIds, getSingleChef}
+const deleteChef = (id) => {
+    return chefModel.deleteOne({_id: id});
+}
+
+module.exports = {getAllChefs, addChef, getAllChefsIds, getSingleChef: updateChef, deleteChef}
 

@@ -53,3 +53,19 @@ dishesRouter.patch('/:id', async (req, res) => {
         })
     }
 })
+
+dishesRouter.delete('/:id', async(req, res)=>{
+    try{
+        const dish = await controller.requestDeleteDish(req.params.id);
+        res.status(200).json({
+            status:'success',
+            data: dish,
+            deleted: `dish ${req.params.id}`
+        })
+    } catch (err){
+        res.status(400).json({
+            status: 'fail',
+            message: err
+        })
+    }
+})

@@ -52,3 +52,19 @@ restaurantsRouter.patch('/:id', async (req, res) => {
         })
     }
 })
+
+restaurantsRouter.delete('/:id', async(req, res)=>{
+    try{
+        const restaurant = await controller.requestDeleteRestaurant(req.params.id);
+        res.status(200).json({
+            status:'success',
+            data: restaurant,
+            deleted: `restaurant ${req.params.id}`
+        })
+    } catch (err){
+        res.status(400).json({
+            status: 'fail',
+            message: err
+        })
+    }
+})

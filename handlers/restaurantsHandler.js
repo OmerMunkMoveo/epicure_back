@@ -9,14 +9,17 @@ const addRestaurant = (data) => {
     return restModel.create(data)
 }
 
-const getSingleRestaurant = async (id, data) => {
+const updateRestaurant = (id, data) => {
 
-    const result = await restModel.findByIdAndUpdate(id, data,{runValidators:true, new:true})
-    return result
+    return restModel.findByIdAndUpdate(id, data, {runValidators: true, new: true});
+}
+
+const deleteRestaurant = (id) => {
+    return restModel.deleteOne({_id: id});
 }
 
 // const updateRestaurant = (id) => {
 //
 // }
 
-module.exports = {getAllRestaurants, addRestaurant, getSingleRestaurant}
+module.exports = {getAllRestaurants, addRestaurant, getSingleRestaurant: updateRestaurant, deleteRestaurant}

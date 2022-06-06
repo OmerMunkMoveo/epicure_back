@@ -10,9 +10,12 @@ const requestAddDish = (data) =>{
 }
 
 const requestUpdateDish = async (data, id) => {
-    const dish = await handler.getSingleDish(id, data)
-    return dish
+    return await handler.getSingleDish(id, data)
+}
+
+const requestDeleteDish = async (id) => {
+    return handler.deleteDish(id);
 }
 
 
-module.exports = {requestAllDishes, requestAddDish, requestUpdateDish}
+module.exports = {requestAllDishes, requestAddDish, requestUpdateDish, requestDeleteDish}

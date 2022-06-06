@@ -64,3 +64,19 @@ chefsRouter.patch('/:id', async (req, res) => {
         })
     }
 })
+
+chefsRouter.delete('/:id', async(req, res)=>{
+    try{
+        const chef = await controller.requestDeleteChef(req.params.id);
+        res.status(200).json({
+            status:'success',
+            data: chef,
+            deleted: `chef ${req.params.id}`
+        })
+    } catch (err){
+        res.status(400).json({
+            status: 'fail',
+            message: err
+        })
+    }
+})

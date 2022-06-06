@@ -9,10 +9,13 @@ const addDish = (data) =>{
     return dishModel.create(data)
 }
 
-const getSingleDish = async (id, data) => {
+const updateDish = (id, data) => {
 
-    const result = await dishModel.findByIdAndUpdate(id, data,{runValidators:true, new:true})
-    return result
+    return dishModel.findByIdAndUpdate(id, data, {runValidators: true, new: true});
 }
 
-module.exports = {getAllDishes, addDish, getSingleDish}
+const deleteDish = (id) => {
+    return dishModel.deleteOne({_id: id});
+}
+
+module.exports = {getAllDishes, addDish, getSingleDish: updateDish, deleteDish}
