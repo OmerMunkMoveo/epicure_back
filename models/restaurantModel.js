@@ -43,7 +43,8 @@ const RestaurantSchema = new mongoose.Schema({
             close: String
         },
     },
-    address: String
+    address: String,
+    image: String
 
 })
 
