@@ -25,5 +25,18 @@ const deleteChef = (id) => {
     return chefModel.deleteOne({_id: id});
 }
 
-module.exports = {getAllChefs, addChef, getAllChefsIds, getSingleChef: updateChef, deleteChef}
+const updateChefOfTheWeek = async (id) => {
+    const oldChef = await chefModel.findOneAndUpdate({chefOfTheWeek : true}, {chefOfTheWeek: false}, {new:true})
+    return chefModel.findByIdAndUpdate(id, {chefOfTheWeek: true}, {new: true})
+}
+
+const searchChefs = (key) =>{
+    return chefModel.find({
+        "$or":[
+            {name: {$regex:key}}
+        ]
+    })
+}
+
+module.exports = {getAllChefs, addChef, getAllChefsIds, updateChef, deleteChef, updateChefOfTheWeek, searchChefs}
 
