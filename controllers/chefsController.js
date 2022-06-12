@@ -82,10 +82,52 @@ const requestDeleteChef = async (req, res) => {
 
 }
 
-
-const requestUpdateChefOfTheWeek = (id) => {
-    return handler.updateChefOfTheWeek(id)
+const requestAddChefOfTheWeek = async (req, res) => {
+    try {
+        const result = await handler.addChefOfTheWeek(req.body.chef)
+        res.status(200).json({
+            status: 'success',
+            data: result
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: 'fail',
+            message: err
+        })
+    }
 }
+
+const requestUpdateChefOfTheWeek = async (req, res) => {
+    try {
+        const result = await handler.updateChefOfTheWeek(req.body.chef)
+        res.status(200).json({
+            status: 'success',
+            data: result
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: 'fail',
+            message: err
+        })
+    }
+
+}
+
+const requestChefOfTheWeek = async (req, res) =>{
+    try{
+        const chef = await handler.getChefOfTheWeek()
+        res.status(200).json({
+            status: 'success',
+            data: chef
+        })
+    } catch (err){
+        res.status(400).json({
+            status: 'fail',
+            message: err
+        })
+    }
+}
+
 
 const requestSearchChefs = (key) => {
     return handler.searchChefs(key)
@@ -99,5 +141,7 @@ module.exports = {
     requestUpdateChef,
     requestDeleteChef,
     requestUpdateChefOfTheWeek,
-    requestSearchChefs
+    requestSearchChefs,
+    requestAddChefOfTheWeek,
+    requestChefOfTheWeek
 }
