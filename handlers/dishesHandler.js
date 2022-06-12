@@ -18,4 +18,12 @@ const deleteDish = (id) => {
     return dishModel.deleteOne({_id: id});
 }
 
-module.exports = {getAllDishes, addDish, getSingleDish: updateDish, deleteDish}
+const searchDishes = (key) =>{
+    return dishModel.find({
+        "$or":[
+            {name: {$regex:key}}
+        ]
+    })
+}
+
+module.exports = {getAllDishes, addDish, updateDish, deleteDish, searchDishes}

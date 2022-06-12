@@ -18,8 +18,12 @@ const deleteRestaurant = (id) => {
     return restModel.deleteOne({_id: id});
 }
 
-// const updateRestaurant = (id) => {
-//
-// }
+const searchRestaurants = (key) =>{
+    return restModel.find({
+        "$or":[
+            {name: {$regex:key}}
+        ]
+    })
+}
 
-module.exports = {getAllRestaurants, addRestaurant, getSingleRestaurant: updateRestaurant, deleteRestaurant}
+module.exports = {getAllRestaurants, addRestaurant, getSingleRestaurant: updateRestaurant, deleteRestaurant, searchRestaurants}

@@ -1,4 +1,5 @@
 const express = require('express')
+const searchRouter= require("./searchRouter").searchRouter
 const router = express.Router()
 const restaurantsRouter = require('./restaurantsRouter').restaurantsRouter
 const chefsRouter = require('./chefsRouter').chefsRouter
@@ -10,3 +11,11 @@ module.exports = {router}
 router.use('/restaurants', restaurantsRouter)
 router.use('/chefs', chefsRouter)
 router.use('/dishes', dishesRouter)
+router.use('/search', searchRouter)
+
+
+/*
+* api/v1/chefs/getall
+* api/v2/chefs/getall
+*
+* */
